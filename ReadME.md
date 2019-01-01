@@ -32,10 +32,10 @@ mnist = tf.keras.datasets.mnist
 
 m = X_train.shape[0] # m is the total number of samples
 
-print(\"Number of training examples = \" + str(m))
-print(\"Number of test examples = \" + str(X_test.shape[0]))
-print(\"Shape of training data x_train: \" + str(X_train.shape) + \" y_train : \" + str(Y_train.shape))
-print(\"Shape of test data x_test: \" + str(X_test.shape))"
+print("Number of training examples = " + str(m))
+print("Number of test examples = " + str(X_test.shape[0]))
+print("Shape of training data x_train: " + str(X_train.shape) + " y_train : " + str(Y_train.shape))
+print("Shape of test data x_test: " + str(X_test.shape))"
 ```
 
 Number of training examples = 60000
@@ -53,11 +53,11 @@ import matplotlib.pyplot as plt
 digit_index = 99
 some_digit = X_train[digit_index]
 
-plt.imshow(some_digit, cmap = matplotlib.cm.binary, interpolation=\"nearest\")
-#plt.axis(\"off\")
+plt.imshow(some_digit, cmap = matplotlib.cm.binary, interpolation="nearest")
+#plt.axis("off")
 plt.show()
 
-print(\"Y Label : \" + str(Y_train[digit_index]))"
+print("Y Label : " + str(Y_train[digit_index]))"
 ```
 
 CNN needs the number of channels in the data. Our dataset doesn't have that. Thus, we reshape it and add an extra dimension depending on whether the Keras backend model assumes channels first or last.
@@ -94,7 +94,7 @@ num_classes = 10
 Y_train = to_categorical(Y_train, num_classes)
 Y_test = to_categorical(Y_test, num_classes)
 
-print(\"Y_train shape : \" + str(Y_train.shape))"
+print("Y_train shape : " + str(Y_train.shape))"
 ```
 Y_train shape : (60000, 10)
 
@@ -120,7 +120,7 @@ Compile the model. Use Adam optimizer with categorical cross entropy loss and ca
 ```python
 kerasModel = MNISTModel()
 
-kerasModel.compile(loss='categorical_crossentropy', optimizer=\"Adam\", metrics=['accuracy'])"
+kerasModel.compile(loss='categorical_crossentropy', optimizer="Adam", metrics=['accuracy'])"
 ```
 
 Train the model for 10 epochs using a batch size of 64.
@@ -148,7 +148,7 @@ kerasModel.fit(x = X_train , y = Y_train, epochs = 10, batch_size = 64)"
      Epoch 9/10
      60000/60000 [==============================] - 124s 2ms/step - loss: 0.0086 - acc: 0.9973
      Epoch 10/10
-     60000/60000 [==============================] - 125s 2ms/step - loss: 0.0058 - acc: 0.9982\n"
+     60000/60000 [==============================] - 125s 2ms/step - loss: 0.0058 - acc: 0.9982
 
 
 Now calculate the accuracy of the model on the test set."
@@ -156,8 +156,8 @@ Now calculate the accuracy of the model on the test set."
 ```python
 preds = kerasModel.evaluate(x = X_test, y = Y_test)
 print()
-print(\"Loss = \" + str(preds[0]))
-print(\"Accuracy on test set = \" + str(preds[1]))
+print("Loss = " + str(preds[0]))
+print("Accuracy on test set = " + str(preds[1]))
 ```
 
      10000/10000 [==============================] - 7s 693us/step
